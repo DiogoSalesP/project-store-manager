@@ -11,7 +11,14 @@ const getById = async (id) => {
   return { isError: false, status: 200, message: result };
 };
 
+const registerProducts = async (name) => {
+  await Model.registerProducts(name);
+  const [product] = await Model.getByProductName(name);
+  return { status: 201, message: product };
+};
+
 module.exports = {
   getAll,
   getById,
+  registerProducts,
 };
