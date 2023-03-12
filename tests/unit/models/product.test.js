@@ -4,6 +4,7 @@ const connection = require('../../../src/models/db/connection');
 const Model = require('../../../src/models/productModel')
 const mockProducts = require('../mocks/products.mock');
 const mockProductsAdd = require('../mocks/productsAdd.mock');
+const mockProductUpdate = require('../mocks/productsUpdate.mock');
 
 describe('Product Model', function () {
   afterEach(function () { sinon.restore() });
@@ -34,6 +35,13 @@ describe('Product Model', function () {
       sinon.stub(connection, 'execute').resolves([mockProductsAdd[3]]);
       const result = await Model.getByProductName("Boneco do Naturo");
       expect(result).to.be.deep.equal(mockProductsAdd[3])
+    })
+  })
+  describe('Test the function "updateProduct"', function () {
+    it('successfully', async function () {
+      sinon.stub(connection, 'execute').resolves([mockProductUpdate[0]]);
+      const result = await Model.updateProduct('Boneco do Naruto', 1);
+      expect(result).to.be.deep.equal(mockProductUpdate[0])
     })
   })
 

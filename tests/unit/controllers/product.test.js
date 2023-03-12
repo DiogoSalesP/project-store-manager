@@ -6,6 +6,7 @@ const Service = require('../../../src/services/productService')
 const Controller = require('../../../src/controllers/productController')
 const mockProducts = require('../mocks/products.mock');
 const mockProductsAdd = require('../mocks/productsAdd.mock');
+const mockProductsUpdate = require('../mocks/productsUpdate.mock');
 
 chai.use(sinonChai);
 
@@ -58,10 +59,38 @@ describe('Product Controller', function () {
       res.json = sinon.stub().returns();
       sinon
         .stub(Service, 'registerProducts')
-        .resolves({ isError: true, status: 201, message: mockProductsAdd[3] });
+        .resolves({ isError: false, status: 201, message: mockProductsAdd[3] });
       await Controller.registerProducts(req, res);
       expect(res.status).to.have.be.calledWith(201);
       expect(res.json).to.have.be.calledWith(mockProductsAdd[3])
+    })
+  })
+  describe('Test the function "updateProduct"', function () {
+    it('successfully', async function () {
+      const req = {};
+      const res = {};
+      req.params = sinon.stub().resolves(1);
+      req.body = sinon.stub().resolves('Boneco do Naruto')
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon
+        .stub(Service, 'updateProduct')
+        .resolves({ isError: false, status: 201, message: mockProductsUpdate[0] });
+      await Controller.updateProduct(req, res);
+      expect(res.status).to.have.be.calledWith(201);
+      expect(res.json).to.have.be.calledWith(mockProductsUpdate[0])
+    })
+    it('failure', async function () {
+      const req = {};
+      const res = {};
+      req.params = sinon.stub().returns(999);
+      req.body = sinon.stub().resolves('Boneco do Naruto')
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(Service, 'updateProduct').resolves({ isError: true, status: 404, message: 'Product not found' });
+      await Controller.updateProduct(req, res);
+      expect(res.status).to.have.be.calledWith(404);
+      expect(res.json).to.have.be.calledWith({ message: 'Product not found' })
     })
   })
 })

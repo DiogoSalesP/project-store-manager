@@ -17,8 +17,17 @@ const registerProducts = async (name) => {
   return { status: 201, message: product };
 };
 
+const updateProduct = async (name, id) => {
+  const product = await Model.updateProduct(name, id);
+  if (product.affectedRows === 0) {
+    return { isError: true, status: 404, message: 'Product not found' };
+  } 
+  return { isError: false, status: 200, message: { id, name } };  
+};
+
 module.exports = {
   getAll,
   getById,
   registerProducts,
+  updateProduct,
 };
