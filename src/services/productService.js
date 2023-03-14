@@ -25,9 +25,16 @@ const updateProduct = async (name, id) => {
   return { isError: false, status: 200, message: { id, name } };  
 };
 
+const deleteProduct = async (id) => {
+  const { affectedRows } = await Model.deleteProduct(id);
+  if (affectedRows === 0) return { isError: true, status: 404, message: 'Product not found' };
+  return { isError: false, status: 204 };
+};
+
 module.exports = {
   getAll,
   getById,
   registerProducts,
   updateProduct,
+  deleteProduct,
 };
