@@ -13,7 +13,14 @@ const getById = async (id) => {
   return { isError: false, status: 200, message: salesProducts };
 };
 
+const deleteSales = async (id) => {
+  const { affectedRows } = await ModelSales.deleteSales(id);
+  if (affectedRows === 0) return { isError: true, status: 404, message: 'Sale not found' };
+  return { isError: false, status: 204 };
+};
+
 module.exports = {
   getAll,
   getById,
+  deleteSales,
 };

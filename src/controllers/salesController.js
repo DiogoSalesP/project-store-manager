@@ -11,7 +11,14 @@ const getById = async (req, res) => {
   return res.status(status).json(message);
 };
 
+const deleteSales = async (req, res) => {
+  const { isError, status, message } = await Service.deleteSales(req.params.id);
+  if (isError) return res.status(status).json({ message });
+  return res.status(status).send();
+};
+
 module.exports = {
   getAll,
   getById,
+  deleteSales,
 };

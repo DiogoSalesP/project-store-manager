@@ -14,4 +14,11 @@ describe('Sales Model', function () {
       expect(result).to.be.deep.equal(mockSales)
     })
   })
+  describe('Test the function "deleteSales"', function () {
+    it('successfully', async function () {
+      sinon.stub(connection, 'execute').resolves([{ affectedRows: 1}]);
+      const result = await Model.deleteSales(2);
+      expect(result).to.be.deep.equal({affectedRows: 1})
+    })
+  })
 })

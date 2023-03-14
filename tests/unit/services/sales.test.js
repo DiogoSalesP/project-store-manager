@@ -27,4 +27,16 @@ describe('Sales Service', function () {
       expect(result).to.be.deep.equal({ isError: true, status: 404, message: 'Sale not found' })
     })
   })
+  describe('Test the function "deleteProduct"', function () {
+    it('successfully', async function () {
+      sinon.stub(ModelSales, 'deleteSales').resolves({affectedRows: 1});
+      const result = await Service.deleteSales(2);
+      expect(result).to.be.deep.equal({isError: false, status: 204 })
+    })
+    it('failure', async function () {
+      sinon.stub(ModelSales, 'deleteSales').resolves({affectedRows: 0});
+      const result = await Service.deleteSales(999);
+      expect(result).to.be.deep.equal({ isError: true, status: 404, message: 'Sale not found' })
+    })
+  })
 })

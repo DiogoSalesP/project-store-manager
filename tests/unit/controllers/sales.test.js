@@ -48,4 +48,29 @@ describe('Sales Controller', function () {
       expect(res.json).to.have.be.calledWith({ message: 'Sale not found' })
     })
   })
+  describe('Test the function "deleteSales"', function () {
+    it('successfully', async function () {
+      const req = {};
+      const res = {};
+      req.params = sinon.stub().resolves(1);
+      res.status = sinon.stub().returns(res);
+      res.send = sinon.stub().returns();
+      sinon
+        .stub(Service, 'deleteSales')
+        .resolves({ isError: false, status: 204 });
+      await Controller.deleteSales(req, res);
+      expect(res.status).to.have.be.calledWith(204);
+    })
+    it('failure', async function () {
+      const req = {};
+      const res = {};
+      req.params = sinon.stub().returns(999);
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(Service, 'deleteSales').resolves({ isError: true, status: 404, message: 'Sale not found' });
+      await Controller.deleteSales(req, res);
+      expect(res.status).to.have.be.calledWith(404);
+      expect(res.json).to.have.be.calledWith({ message: 'Sale not found' })
+    })
+  })
 })
