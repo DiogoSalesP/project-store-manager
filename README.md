@@ -1,4 +1,4 @@
-# :construction: README customizado em construção ! :construction:
+
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
 
@@ -17,6 +17,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 
 A API a ser construída é um sistema de gerenciamento de vendas no formato dropshipping em que será possível criar, visualizar, deletar e atualizar produtos e vendas. Foi utilizado o banco de dados MySQL para a gestão de dados. Além disso, a API deve ser RESTful.
 <br />
+Projeto desenvolvido na Trybe !
 
 <details>
   <summary><strong>🐳 Rodando no Docker vs Localmente</strong></summary>
