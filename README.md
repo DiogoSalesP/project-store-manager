@@ -15,11 +15,23 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 
 <summary><strong>👨‍💻 API utilizando a arquitetura MSC (model-service-controller)!</strong></summary>
 
-A API a ser construída é um sistema de gerenciamento de vendas no formato dropshipping em que será possível criar, visualizar, deletar e atualizar produtos e vendas. Foi utilizado o banco de dados MySQL para a gestão de dados. Além disso, a API deve ser RESTful.
+Esse é um projeto desenvolvido como parte do currículo do curso de Desenvolvimento Web Full Stack da Trybe. O objetivo é construir uma aplicação de gerenciamento de estoque para uma loja fictícia.
 <br />
-Projeto desenvolvido na Trybe !
+
+<summary><strong>Funcionalidades</strong></summary>
+A aplicação possui as seguintes funcionalidades:
+
+Cadastro de produtos: permite cadastrar produtos, informando seu nome, preço, quantidade em estoque e categoria.
+Listagem de produtos: exibe a lista de produtos cadastrados, com informações detalhadas de cada produto.
+Edição de produtos: possibilita a edição dos dados de um produto já cadastrado.
+Exclusão de produtos: permite a exclusão de produtos cadastrados.
+Cadastro de vendas: possibilita registrar a venda de produtos, informando o produto vendido e a quantidade.
+Listagem de vendas: exibe a lista de vendas realizadas, com informações detalhadas de cada venda.
+
+
 
 <details>
+
   <summary><strong>🐳 Rodando no Docker vs Localmente</strong></summary>
 
 ### 👉 Com Docker
